@@ -23,10 +23,10 @@ namespace MODEL_CODE
         }
 
         private ResourceType resourceType;
-        private int resourcesGenerated;
+        public int resourcesGenerated;
         private int resourcesPerRound;
         private int resourcePoolRemaining;
-
+        private int spawnPoint; //for resourceBuildings spawning units
 
         public ResourceBuilding(int x, int y, string faction) : base(x, y, 15, /*15,*/ '$', faction/*, "RESOURCE BUILDING", 0, 250, 25, "", 0, 0*/)
         {
@@ -34,6 +34,15 @@ namespace MODEL_CODE
             resourcesGenerated = 0;
             resourcesPerRound = GameEngine.random.Next(1, 6);
             resourcePoolRemaining = GameEngine.random.Next(100, 200);
+
+            if (y >= Map.mapSize - 1)
+            {
+                spawnPoint = y - 1;
+            }
+            else
+            {
+                spawnPoint = y + 1;
+            }
         }
 
         public ResourceBuilding(string values)
@@ -80,6 +89,27 @@ namespace MODEL_CODE
                 resourcesGenerated += totalResources;
                 resourcePoolRemaining -= totalResources;
             }
+
+            if(resourcesGenerated == 50) //when reaching 50 of a resource, it is consumed in exchange for creating a unit
+            {
+                CreateResourceUnit();
+                resourcesGenerated -= 50;
+            }
+        }
+
+        public Unit CreateResourceUnit() //Resource Building makes a unit at 100 rss
+        {
+            Unit unit;
+            int decider = GameEngine.random.Next(0, 2);
+            if (decider == 0)
+            {
+                unit = new MeleeUnit(x, spawnPoint, faction); //moved here from map and program classes, efficiency
+            }
+            else
+            {
+                unit = new RangedUnit(x, spawnPoint, faction);
+            }
+            return unit;
         }
 
         public override string ToString() //data to dispay in the rich text box

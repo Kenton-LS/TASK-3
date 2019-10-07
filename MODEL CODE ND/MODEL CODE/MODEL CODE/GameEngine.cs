@@ -158,7 +158,7 @@ namespace MODEL_CODE
                 Unit closestUnit = unit.GetClosestUnit(map.Units);
                 if(closestUnit == null)
                 {
-                    foreach(Building building in map.Buildings) //new
+                    /*foreach(Building building in map.Buildings) //new
                     {
                         if (building.IsDestroyed) //if unit is dead, it will be discarded
                         {
@@ -167,13 +167,13 @@ namespace MODEL_CODE
 
                         Building closestBuilding = unit.GetClosestBuilding(map.Buildings);
                         if (closestBuilding == null)
-                        {
+                        {*/
                             gameOver = true;
                             winning = unit.Faction;
                             map.UpdateDisplay();
                             return;
-                        }
-                    }
+                       // }
+                    //}
                 
                 }
                 

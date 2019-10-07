@@ -13,7 +13,8 @@ using System.IO;
 namespace MODEL_CODE
 {
     public partial class frm1 : Form
-    {
+    { 
+
         GameEngine engine;
         Timer timer;
         Condition condition = Condition.PAUSED;

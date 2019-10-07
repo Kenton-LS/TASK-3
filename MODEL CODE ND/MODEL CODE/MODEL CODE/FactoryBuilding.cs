@@ -9,6 +9,7 @@ namespace MODEL_CODE
 {
     class FactoryBuilding : Building
     {
+        ResourceBuilding rb;
         enum FactoryType //spawning specific types of factories
         {
             MELEE,
@@ -74,7 +75,14 @@ namespace MODEL_CODE
 
         public Unit CreateUnit() //declare unit variable
         {
-                Unit unit;
+    
+            Unit unit;
+
+           /* if (rb.resourcesGenerated == 50)
+            {
+                rb.resourcesGenerated -= 50;
+            }*/
+
             if (factoryType == FactoryType.MELEE)
             {
                 unit = new MeleeUnit(x, spawnPoint, faction); //moved here from map and program classes, efficiency
@@ -86,6 +94,24 @@ namespace MODEL_CODE
             return unit;
         }
 
+       /* public Unit CreateUnit() //declare unit variable //ATTEMPTED FACTORY RESOURCE SPAWN
+        {
+            Unit unit;
+            if (rb.resourcesGenerated == 50)
+            {
+                if (factoryType == FactoryType.MELEE)
+                {
+                    unit = new MeleeUnit(x, spawnPoint, faction); //moved here from map and program classes, efficiency
+                }
+                else
+                {
+                    unit = new RangedUnit(x, spawnPoint, faction);
+                }
+                return unit;
+            }
+            return rb.resourcesGenerated;
+        }
+        */
         private string GetFactoryTypeName()
         {
             return new string[] { "MELEE", "RANGED" }[(int)factoryType];

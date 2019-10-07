@@ -184,7 +184,7 @@ namespace MODEL_CODE
             }
             return closestUnit;
         }
-
+       
         public virtual Building GetClosestBuilding(Building[] buildings) //new
         {
             double closestDistanceBuilding = int.MaxValue;
@@ -219,8 +219,19 @@ namespace MODEL_CODE
 
         protected double GetDistance(Unit otherUnit) //helper method
         {
-            double xDistance = otherUnit.X - X; //get x distance
-            double yDistance = otherUnit.Y - Y; //get y distance
+            double xDistance;
+            double yDistance;
+            if (otherUnit != null)
+            {
+                xDistance = otherUnit.X - X; //get x distance
+                yDistance = otherUnit.Y - Y; //get y distance
+               
+            }
+            else
+            {
+                xDistance = 1; //
+                yDistance = 1;
+            }
             return Math.Sqrt(xDistance * xDistance + yDistance * yDistance); //more efficient than Math.Pow
         }
 

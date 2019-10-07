@@ -104,17 +104,17 @@
             // 
             // lblBuildings
             // 
-            this.lblBuildings.Location = new System.Drawing.Point(57, 410);
+            this.lblBuildings.Location = new System.Drawing.Point(12, 410);
             this.lblBuildings.Name = "lblBuildings";
-            this.lblBuildings.Size = new System.Drawing.Size(113, 23);
+            this.lblBuildings.Size = new System.Drawing.Size(204, 23);
             this.lblBuildings.TabIndex = 8;
             this.lblBuildings.Text = "BUILDINGS";
             // 
             // lblUnits
             // 
-            this.lblUnits.Location = new System.Drawing.Point(951, 414);
+            this.lblUnits.Location = new System.Drawing.Point(825, 407);
             this.lblUnits.Name = "lblUnits";
-            this.lblUnits.Size = new System.Drawing.Size(112, 23);
+            this.lblUnits.Size = new System.Drawing.Size(201, 23);
             this.lblUnits.TabIndex = 9;
             this.lblUnits.Text = "UNITS";
             // 

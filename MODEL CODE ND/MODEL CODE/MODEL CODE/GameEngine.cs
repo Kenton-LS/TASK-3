@@ -176,9 +176,7 @@ namespace MODEL_CODE
                     }
                 
                 }
-
-            
-
+                
 
                 double percent = unit.Health / unit.MaxHealth; //determining whether to run away. the original code was moved here from the unit class
                 if(unit is MeleeUnit || unit is RangedUnit)

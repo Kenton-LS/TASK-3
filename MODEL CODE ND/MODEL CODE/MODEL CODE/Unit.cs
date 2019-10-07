@@ -95,12 +95,7 @@ namespace MODEL_CODE
             }
         }
 
-      /*  public abstract void Move(Unit closestUnit); //Abstract method declarations
-        public abstract void Combat(Unit otherUnit);
-        public abstract void Run();
-        public abstract bool InRange(Unit otherUnit); //Returns a boolean
-        public abstract Unit GetClosestUnit(Unit[] units); //Returns Units, takes an array of Units
-        public abstract void Kill();*/
+
 
         public virtual void Move(Unit closestUnit) //this method has been moved here from the other inherited building classes, and it has been expanded
         {

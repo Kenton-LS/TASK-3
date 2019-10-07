@@ -18,12 +18,7 @@ namespace MODEL_CODE
 
         string[,] map; //map stored in a string to hsve 3 characters represent a block
         string[] factions = { "BLUE", "RED", "WHITE" };
-        /*string[] nameUnits1 = { "PIKEMAN", "SWORDSMAN", "KNIGHT", "BESERKER", "PALADIN" };
-        string[] nameUnits2 = { "ARCHER", "MAGE", "CROSSBOWMAN", "GRENADIER", "SPEARTHROWER" };*/
 
-        //Random r = new Random();
-
-        ///
 
         public Map(int randomNumberOfUnits, int numberOfBuildings) //adds number of buildings to units
         {
@@ -187,42 +182,5 @@ namespace MODEL_CODE
             }
         }
 
- 
-
-       /* public void Spawn(Building building)
-        {
-            for (int iii = 0; iii < buildings.Length; iii++)
-            {
-                Array.Resize(ref units, units.Length + 1);
-
-                int cx = buildings[iii].X; //generate x and y values
-                int cy = buildings[iii].Y + 1;
-                if(buildings[iii].Y > mapSize)
-                {
-                    cy = buildings[iii].Y - 1;
-                }
-
-                int factionIndex = r.Next(0, 2); //decides blue or red team
-                int nameIndex = r.Next(0, 5);
-                int unitType = r.Next(0, 2); //decides ranged or melee
-
-               /* if (map[cx, cy] != null)
-                {
-                    
-                }
-
-                if (unitType == 0)
-                {
-                    units[units.Length - 1] = new MeleeUnit(cx, cy, factions[factionIndex], nameUnits1[nameIndex]);
-                }
-                else
-                {
-                    units[units.Length - 1] = new RangedUnit(cx, cy, factions[factionIndex], nameUnits1[nameIndex]);
-                }
-
-                map[cx, cy] = units[iii].Faction[0] + "/" + units[iii].Symbol;
-           
-            }
-        }*/
     }
 }

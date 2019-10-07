@@ -22,7 +22,7 @@ namespace MODEL_CODE
 
         public GameEngine()
         {
-            map = new Map(10, 10); //making map
+            map = new Map(14, 6); //making map
         }
 
         public bool GameOver
@@ -56,32 +56,7 @@ namespace MODEL_CODE
         }
         ///
         
-        /*public string DisplayMap()
-        {
-            return map.DisplayMap(); //map. allows form to access it
-        }
-
-        public string Information()
-        {
-            string info = ""; //making the space between each unit
-            foreach (Unit unit in map.Units)
-            {
-                info += unit + "\n";
-            }
-            return info;
-        }
-
-        public string BuildingInformation()
-        {
-            string infoB = ""; ///////////////////////////////////////////maybe mistake here
-            foreach (Building building in map.Buildings)
-            {
-                infoB += building + "\n";
-            }
-            return infoB;
-        }*/
-
-        ///
+      
 
         public void Reset() //reset the map for a new simulation
         {

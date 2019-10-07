@@ -17,7 +17,7 @@ namespace MODEL_CODE
         Building[] buildings;
 
         string[,] map; //map stored in a string to hsve 3 characters represent a block
-        string[] factions = { "BLUE", "RED" };
+        string[] factions = { "BLUE", "RED", "WHITE" };
         /*string[] nameUnits1 = { "PIKEMAN", "SWORDSMAN", "KNIGHT", "BESERKER", "PALADIN" };
         string[] nameUnits2 = { "ARCHER", "MAGE", "CROSSBOWMAN", "GRENADIER", "SPEARTHROWER" };*/
 
@@ -132,7 +132,7 @@ namespace MODEL_CODE
                 int y = GameEngine.random.Next(0, mapSize);
                 int factionIndex = GameEngine.random.Next(0, 2); //decides blue or red team
                 int nameIndex = GameEngine.random.Next(0, 2); //CHANGED from 5 to 2
-                int unitType = GameEngine.random.Next(0, 2); //decides ranged or melee
+                int unitType = GameEngine.random.Next(0, 3); //decides ranged or melee
 
                 while(map[x, y] != null)
                 {
@@ -144,9 +144,13 @@ namespace MODEL_CODE
                 {
                     units[i] = new MeleeUnit(x, y, factions[factionIndex] /*nameUnits1[nameIndex]*/);
                 }
-                else
+                else if(unitType == 1)
                 {
                     units[i] = new RangedUnit(x, y, factions[factionIndex] /*nameUnits2[nameIndex]*/);
+                }
+                else
+                {
+                    units[i] = new WizardUnit(x, y, factions[2]);
                 }
                 map[x, y] = units[i].Faction[0] + "/" + units[i].Symbol; //returns the team and the unit type
             }

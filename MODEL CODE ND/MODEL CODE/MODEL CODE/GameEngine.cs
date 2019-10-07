@@ -123,6 +123,7 @@ namespace MODEL_CODE
                     case "Ranged": map.AddUnit(new RangedUnit(recordIn)); break;
                     case "Factory": map.AddBuilding(new FactoryBuilding(recordIn)); break;
                     case "Resource": map.AddBuilding(new ResourceBuilding(recordIn)); break;
+                    case "Wizard": map.AddUnit(new WizardUnit(recordIn)); break;
                 }
                 recordIn = reader.ReadLine(); //readline. if it is not null, it will carry on reading until there are no lines left
             }
@@ -136,57 +137,7 @@ namespace MODEL_CODE
             UpdateUnits(); //break it into sizeable chunks
             UpdateBuildings();
             map.UpdateDisplay();
-            round ++;
-
-            /*foreach (Unit unit in map.Units) //link all units in map.Units
-            {
-                if(unit.IsDestroyed)
-                {
-                    continue; //guarding if statement: if it is destroyed, go to the next unit in the loop
-                }
-
-                Unit closest = unit.GetClosestUnit(map.Units);
-                if (closest == null) //avoiding nesting more than 2 if statements (no spaghetti!)
-                {
-                    gameOver = true;
-                    winning = unit.Faction;
-                    map.UpdateDisplay();
-                    return;
-                }
-
-                double percentageHealth = unit.Health / unit.MaxHealth;
-                if(percentageHealth <= 0.25) //if health percentage is less than 25%, it must run randomly away
-                {
-                    unit.Run();
-                }
-                else if (unit.InRange(closest))
-                {
-                    unit.Combat(closest);
-                }
-                else
-                {
-                    unit.Move(closest);
-                }
-                MapBoundary(unit, map.Size); //if x < 0, reset x to 0 so it never leaves the map (push unit back in)
-            }
-
-            foreach(Building building in map.Buildings)
-            {
-                building.ResourceCheck(); //GENERATES RESOURCES
-                FactorySpawnsUnits(map, fb, map.Size); ///////////////////////SPAWN IN FACTORY TROOPS
-
-                if (building.IsDestroyedB)
-                {
-                    continue;
-                }
-                BuildingBoundary(building, map.Size);
-                
-            }
-
-
-            
-            map.UpdateDisplay();
-            round++;*/
+            round++;
         }
 
         /// 
@@ -232,8 +183,9 @@ namespace MODEL_CODE
                     map.UpdateDisplay();
                     return;
                 }
-
+                
                 double percent = unit.Health / unit.MaxHealth; //determining whether to run away. the original code was moved here from the unit class
+                
                 if(percent <= 0.25)
                 {
                     unit.Run();

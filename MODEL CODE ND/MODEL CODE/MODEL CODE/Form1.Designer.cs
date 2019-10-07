@@ -46,6 +46,7 @@
             this.lblMap.Name = "lblMap";
             this.lblMap.Size = new System.Drawing.Size(273, 395);
             this.lblMap.TabIndex = 0;
+            this.lblMap.Click += new System.EventHandler(this.lblMap_Click);
             // 
             // rtbUnitInfo
             // 

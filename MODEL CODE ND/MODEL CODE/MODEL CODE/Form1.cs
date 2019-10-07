@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+//using Microsoft.VisualBasic;
 
 namespace MODEL_CODE
 {
@@ -23,12 +24,7 @@ namespace MODEL_CODE
             InitializeComponent();
             engine = new GameEngine(); //new game engine object
             UpdateInterface();
-           /* lblMap.Text = engine.DisplayMap(); //initialize map through the game enigne constructor (sets up map)
-            rtbUnitInfo.Text = engine.Information() + engine.BuildingInformation();
-            lblRound.Text = "Round:  " + engine.Round;
 
-            ///
-            */
             timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += RunningGame; //runs through every time the timer ticks, runs loop of the game
@@ -65,7 +61,7 @@ namespace MODEL_CODE
 
         private void frm1_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -92,28 +88,18 @@ namespace MODEL_CODE
         {
             engine.SaveGame2();
             lblMap.Text = "LOADING 100%\n" + engine.MapDisplay;
-                /*const string FILE_NAME = "BOEREWORS WARS.txt";
 
-                FileStream outFile = new FileStream(FILE_NAME, FileMode.Create, FileAccess.Write);
-                StreamWriter writer = new StreamWriter(outFile);
-                writer.WriteLine(lblMap.Text);
-
-
-                writer.Close();
-                outFile.Close();*/
             
         }
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            /*FileStream inFile = new FileStream("BOEREWORS WARS.txt", FileMode.Open, FileAccess.Read);
-            //lblMap.Text = "";
-            lblMap.Text = File.ReadAllText("BOEREWORS WAR.txt");
-            //lblMap.Text = File.ReadAllText(C:\Users\kento\OneDrive\Desktop\MODEL CODE\MODEL CODE\MODEL CODE\bin\Debug\BOEREWORS WARS.exe);
 
-            inFile.Close();
+        }
 
-            //lblMap.Text = outFile;*/
+        private void lblMap_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public enum Condition

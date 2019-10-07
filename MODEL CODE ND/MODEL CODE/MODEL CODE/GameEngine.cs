@@ -123,6 +123,11 @@ namespace MODEL_CODE
         {
             foreach (Building building in map.Buildings)
             {
+                if (building.IsDestroyed) //if unit is dead, it will be discarded
+                {
+                    continue;
+                }
+
                 if (building is FactoryBuilding)
                 {
                     FactoryBuilding factoryBuilding = (FactoryBuilding) building; //if building is a factory, it gets assigned

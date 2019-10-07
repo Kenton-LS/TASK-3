@@ -95,6 +95,17 @@ namespace MODEL_CODE
             }
         }
 
+        public virtual void AttackBuilding(Building otherBuilding) //new
+        {
+            isAttacking = true;
+            otherBuilding.Health -= attack;
+
+            if (otherBuilding.Health <= 0)
+            {
+                otherBuilding.Health = 0;
+                otherBuilding.Destroy();
+            }
+        }
 
 
         public virtual void Move(Unit closestUnit) //this method has been moved here from the other inherited building classes, and it has been expanded
@@ -104,6 +115,22 @@ namespace MODEL_CODE
             int moveY = closestUnit.Y - Y;
 
             if(Math.Abs(moveX) > Math.Abs(moveY))
+            {
+                x += Math.Sign(moveX);
+            }
+            else
+            {
+                y += Math.Sign(moveY);
+            }
+        }
+
+        public virtual void MoveB(Building closestBuilding) //new
+        {
+            int moveX = closestBuilding.X - X;
+
+            int moveY = closestBuilding.Y - Y;
+
+            if (Math.Abs(moveX) > Math.Abs(moveY))
             {
                 x += Math.Sign(moveX);
             }
@@ -141,6 +168,13 @@ namespace MODEL_CODE
             return Math.Sqrt(xDistance * xDistance + yDistance * yDistance); //more efficient than Math.Pow
         }
 
+        protected double GetDistanceBuilding(Building otherBuilding) //new
+        {
+            double xDistanceB = otherBuilding.X - X; 
+            double yDistanceB = otherBuilding.Y - Y; 
+            return Math.Sqrt(xDistanceB * xDistanceB + yDistanceB * yDistanceB);
+        }
+
         public virtual Unit GetClosestUnit(Unit[] units)
         {
             double closestDistance = int.MaxValue;
@@ -163,9 +197,36 @@ namespace MODEL_CODE
             return closestUnit;
         }
 
+        public virtual Building GetClosestBuilding(Building[] buildings) //new
+        {
+            double closestDistanceBuilding = int.MaxValue;
+            Building closestBuilding = null;
+
+            foreach(Building otherBuilding in buildings)
+            {
+                if(otherBuilding.Faction == faction || otherBuilding.IsDestroyed)
+                {
+                    continue;
+                }
+
+                double distanceBuilding = GetDistanceBuilding(otherBuilding);
+                if(distanceBuilding < closestDistanceBuilding)
+                {
+                    closestDistanceBuilding = distanceBuilding;
+                    closestBuilding = otherBuilding;
+                }
+            }
+            return closestBuilding;
+        }
+
         public virtual bool IsInRange(Unit otherUnit) //for calculating the closest unit
         {
             return GetDistance(otherUnit) <= attackRange;
+        }
+
+        public virtual bool IsInRangeBuilding(Building otherBuilding) //new
+        {
+            return GetDistanceBuilding(otherBuilding) <= attackRange;
         }
 
         public override string ToString() //Rather place ToString here instead of dupicating it in other classes (Ranged & Melee)

@@ -12,20 +12,7 @@ namespace MODEL_CODE
         protected string faction;
         protected char symbol;
         protected bool isDestroyed = false;
-        //public static Random r = new Random();
 
-
-
-       /* //new RESOURCE
-        protected string resourceType; removed code, this will be implemented in enum form in the resource building class
-        protected int resourcesGenerated;
-        protected int resourcesPerRound;
-        protected int resourcePoolRemaining;
-
-        //new FACTORY
-        protected string factoryUnitType;
-        protected int productionSpeed;
-        protected int spawnPoint;*/
 
         public Building(int x, int y, int health, /*int maxHealth, */char symbol, string faction/*, 
                         string resourceType, int resourcesGenerated, int resourcePoolRemaining, int resourcesPerRound,
@@ -37,13 +24,7 @@ namespace MODEL_CODE
             this.maxHealth = health; //initializing everything
             this.faction = faction;
             this.symbol = symbol;
-           /* this.resourceType = resourceType;
-            this.resourcesGenerated = resourcesGenerated;
-            this.resourcePoolRemaining = resourcePoolRemaining;
-            this.resourcesPerRound = resourcesPerRound;
-            this.factoryUnitType = factoryUnitType;
-            this.productionSpeed = productionSpeed;
-            this.spawnPoint = spawnPoint;*/
+
         }
 
         public Building() { }
@@ -52,27 +33,16 @@ namespace MODEL_CODE
 
         public int Y { get { return y; } } //removed the 'abstract' properties
 
-        //public abstract int Health { get; set; }
-        //public abstract int MaxHealth { get; }
 
         public char Symbol { get { return symbol; } }
 
         public string Faction { get { return faction; } }
 
-        public abstract void Destroy(); //moved up here, removed bool
+       // public abstract void Destroy(); //moved up here, removed bool
 
         public abstract string SaveGame(); //replaced the save void instead of abstract ToString(), the method is already virtual
 
-        
-        /*public abstract string ResourceType { get; }
-        public abstract int ResourcesGenerated { get; set; }
-        public abstract int ResourcePoolRemaining { get; set; } //replaced in resource and factory classes respectively
-        public abstract int ResourcesPerRound { get; set; }
-
-        public abstract string FactoryUnitType { get; }
-        public abstract int ProductionSpeed { get; set; }
-        public abstract int SpawnPoint { get; set; }*/
-
+        public bool IsDestroyed { get { return isDestroyed; } }
         ///
 
         public override string ToString() //the properties on both the base and inherited classes
@@ -84,20 +54,11 @@ namespace MODEL_CODE
                    //"RSS PER ROUND:  " + resourcesPerRound + "\n";
         }
 
-        /*public void ResourceCheck()
+        public virtual void Destroy() //death method
         {
-            if (resourcePoolRemaining > 0 && isDestroyedB == false)
-            {
-                resourcesGenerated = resourcesGenerated + resourcesPerRound;
-                resourcePoolRemaining = resourcePoolRemaining - resourcesPerRound; //all moved to resource class
-            }
-            else
-            {
-                DestroyB();
-            }
+            isDestroyed = true;
+            symbol = 'X';
         }
-
-        public abstract void Save();*/
 
 
     }

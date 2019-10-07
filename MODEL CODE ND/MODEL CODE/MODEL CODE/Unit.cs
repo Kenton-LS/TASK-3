@@ -161,19 +161,7 @@ namespace MODEL_CODE
             }
         }
 
-        protected double GetDistance(Unit otherUnit) //helper method
-        {
-            double xDistance = otherUnit.X - X; //get x distance
-            double yDistance = otherUnit.Y - Y; //get y distance
-            return Math.Sqrt(xDistance * xDistance + yDistance * yDistance); //more efficient than Math.Pow
-        }
-
-        protected double GetDistanceBuilding(Building otherBuilding) //new
-        {
-            double xDistanceB = otherBuilding.X - X; 
-            double yDistanceB = otherBuilding.Y - Y; 
-            return Math.Sqrt(xDistanceB * xDistanceB + yDistanceB * yDistanceB);
-        }
+     
 
         public virtual Unit GetClosestUnit(Unit[] units)
         {
@@ -227,6 +215,20 @@ namespace MODEL_CODE
         public virtual bool IsInRangeBuilding(Building otherBuilding) //new
         {
             return GetDistanceBuilding(otherBuilding) <= attackRange;
+        }
+
+        protected double GetDistance(Unit otherUnit) //helper method
+        {
+            double xDistance = otherUnit.X - X; //get x distance
+            double yDistance = otherUnit.Y - Y; //get y distance
+            return Math.Sqrt(xDistance * xDistance + yDistance * yDistance); //more efficient than Math.Pow
+        }
+
+        protected double GetDistanceBuilding(Building otherBuilding) //new
+        {
+            double xDistanceB = otherBuilding.X - X;
+            double yDistanceB = otherBuilding.Y - Y;
+            return Math.Sqrt(xDistanceB * xDistanceB + yDistanceB * yDistanceB);
         }
 
         public override string ToString() //Rather place ToString here instead of dupicating it in other classes (Ranged & Melee)

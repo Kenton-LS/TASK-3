@@ -22,7 +22,7 @@ namespace MODEL_CODE
 
         public GameEngine()
         {
-            map = new Map(14, 6); //making map
+            map = new Map(3, 6); //making map
         }
 
         public bool GameOver
@@ -158,12 +158,54 @@ namespace MODEL_CODE
                 Unit closestUnit = unit.GetClosestUnit(map.Units);
                 if(closestUnit == null)
                 {
-                    gameOver = true;
-                    winning = unit.Faction;
-                    map.UpdateDisplay();
-                    return;
-                }
+                    foreach(Building building in map.Buildings) //new
+                    {
+                        if (building.IsDestroyed) //if unit is dead, it will be discarded
+                        {
+                            continue;
+                        }
+
+                        Building closestBuilding = unit.GetClosestBuilding(map.Buildings);
+                        if (closestBuilding == null)
+                        {
+                            gameOver = true;
+                            winning = unit.Faction;
+                            map.UpdateDisplay();
+                            return;
+                        }
+                    }
                 
+                }
+
+            /*foreach(Building building in map.Buildings)
+            {
+                if (building.IsDestroyed) //if unit is dead, it will be discarded
+                {
+                    continue;
+                }
+
+                Building closestBuilding = unit.GetClosestBuilding(map.Buildings);
+                if (closestBuilding == null)
+                {
+                    foreach (Unit unit in map.Units)
+                    {
+                        if (unit.IsDestroyed) //if unit is dead, it will be discarded
+                        {
+                            continue;
+                        }
+
+                        Unit closestUnit = unit.GetClosestUnit(map.Units);
+                        if (closestUnit == null)
+                        {
+                            gameOver = true;
+                            winning = unit.Faction;
+                            map.UpdateDisplay();
+                            return;
+                        }
+                    }
+                }*/
+
+
                 double percent = unit.Health / unit.MaxHealth; //determining whether to run away. the original code was moved here from the unit class
                 if(unit is MeleeUnit || unit is RangedUnit)
                 {
@@ -203,27 +245,6 @@ namespace MODEL_CODE
         /// 
         /// 
         /// 
-        /// 
-
-        /*private void MapBoundary(Unit unit, int size)
-        {
-            if(unit.X < 0) //push in x
-            {
-                unit.X = 0;
-            }
-            else if(unit.X >= size)
-            {
-                unit.X = size - 1;
-            }
-            if(unit.Y < 0) //push in y
-            {
-                unit.Y = 0;
-            }
-            else if(unit.Y >= size)
-            {
-                unit.Y = size - 1;
-            }
-        }*/
 
         private void SaveRound()
         {
@@ -242,41 +263,7 @@ namespace MODEL_CODE
             reader.Close();
             inFile.Close();
         }
-
-        /*
-        private void BuildingBoundary(Building building, int size)
-        {
-            if (building.X < 0) //push in x
-            {
-                building.X = 0;
-            }
-            else if (building.X >= size)
-            {
-                building.X = size - 1;
-            }
-            if (building.Y < 0) //push in y
-            {
-                building.Y = 0;
-            }
-            else if (building.Y >= size)
-            {
-                building.Y = size - 1;
-            }
-        }
-
-        public void FactorySpawnsUnits(Map map, FactoryBuilding fb, int size) //FOR FACTORY TO SUMMON A UNIT
-        {
-            if (round % 5 == 0)
-            {
-                    //spawn a new unit at y-1; 
-                    map.Spawn(fb);
-                    //spawn a new unit at y+1;
-            }
-            else
-            {
-
-            }
-        }*/
+        
 
         private void MapBoundary(Unit unit, int mapSize)
         {

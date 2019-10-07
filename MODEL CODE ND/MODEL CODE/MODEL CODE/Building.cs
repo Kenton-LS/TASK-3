@@ -33,6 +33,7 @@ namespace MODEL_CODE
 
         public int Y { get { return y; } } //removed the 'abstract' properties
 
+        public int Health { get { return health; } set { health = value; } }
 
         public char Symbol { get { return symbol; } }
 

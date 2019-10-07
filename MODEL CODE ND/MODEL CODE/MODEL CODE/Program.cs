@@ -16,7 +16,7 @@ namespace MODEL_CODE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm1());
+            Application.Run(new frm2()); //changed to show form2 first 
         }
     }
 }

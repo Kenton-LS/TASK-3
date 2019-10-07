@@ -87,7 +87,7 @@ namespace MODEL_CODE
             return "RESOURCE (" + symbol + "/" + faction[0] + ")" + "\n" +
                     "X: " + x + "Y: " + y + "\n" +
                     "HP: " + health + " / " + maxHealth + "\n" +
-                    "$ -> " + resourceType + " :    " + resourcesGenerated / resourcePoolRemaining + "\n" +
+                    "$ -> " + resourceType + " :    " + resourcesGenerated + "/" +  resourcePoolRemaining + "\n" +
                     "RSS Per Round: " + resourcesPerRound + "\n";
         }
 

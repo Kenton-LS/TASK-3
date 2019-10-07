@@ -42,15 +42,15 @@
             // lblMap
             // 
             this.lblMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblMap.Location = new System.Drawing.Point(315, 9);
+            this.lblMap.Location = new System.Drawing.Point(315, 23);
             this.lblMap.Name = "lblMap";
-            this.lblMap.Size = new System.Drawing.Size(273, 395);
+            this.lblMap.Size = new System.Drawing.Size(401, 364);
             this.lblMap.TabIndex = 0;
             this.lblMap.Click += new System.EventHandler(this.lblMap_Click);
             // 
             // rtbUnitInfo
             // 
-            this.rtbUnitInfo.Location = new System.Drawing.Point(594, 7);
+            this.rtbUnitInfo.Location = new System.Drawing.Point(722, 7);
             this.rtbUnitInfo.Name = "rtbUnitInfo";
             this.rtbUnitInfo.Size = new System.Drawing.Size(341, 397);
             this.rtbUnitInfo.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.btnStart.Location = new System.Drawing.Point(222, 410);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(434, 63);
+            this.btnStart.Size = new System.Drawing.Size(597, 63);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "START / PAUSE";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(677, 440);
+            this.btnSave.Location = new System.Drawing.Point(825, 440);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 23);
             this.btnSave.TabIndex = 5;
@@ -87,7 +87,7 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(816, 440);
+            this.btnRead.Location = new System.Drawing.Point(944, 440);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(119, 23);
             this.btnRead.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // lblUnits
             // 
-            this.lblUnits.Location = new System.Drawing.Point(765, 410);
+            this.lblUnits.Location = new System.Drawing.Point(951, 414);
             this.lblUnits.Name = "lblUnits";
             this.lblUnits.Size = new System.Drawing.Size(112, 23);
             this.lblUnits.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 485);
+            this.ClientSize = new System.Drawing.Size(1075, 485);
             this.Controls.Add(this.lblUnits);
             this.Controls.Add(this.lblBuildings);
             this.Controls.Add(this.rtbUnitInfo2);

@@ -22,7 +22,7 @@ namespace MODEL_CODE
 
         public GameEngine()
         {
-            map = new Map(3, 6); //making map
+            map = new Map(10, 4); //making map
         }
 
         public bool GameOver
@@ -177,33 +177,7 @@ namespace MODEL_CODE
                 
                 }
 
-            /*foreach(Building building in map.Buildings)
-            {
-                if (building.IsDestroyed) //if unit is dead, it will be discarded
-                {
-                    continue;
-                }
-
-                Building closestBuilding = unit.GetClosestBuilding(map.Buildings);
-                if (closestBuilding == null)
-                {
-                    foreach (Unit unit in map.Units)
-                    {
-                        if (unit.IsDestroyed) //if unit is dead, it will be discarded
-                        {
-                            continue;
-                        }
-
-                        Unit closestUnit = unit.GetClosestUnit(map.Units);
-                        if (closestUnit == null)
-                        {
-                            gameOver = true;
-                            winning = unit.Faction;
-                            map.UpdateDisplay();
-                            return;
-                        }
-                    }
-                }*/
+            
 
 
                 double percent = unit.Health / unit.MaxHealth; //determining whether to run away. the original code was moved here from the unit class

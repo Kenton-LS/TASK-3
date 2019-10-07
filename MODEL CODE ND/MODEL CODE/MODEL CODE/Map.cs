@@ -10,6 +10,8 @@ namespace MODEL_CODE
     class Map
     {
         public const int mapSize = 20;
+        public int mapX = frm2.mapX;
+        public int mapY = frm2.mapY;
         public int randomNumberOfUnits;
         public int numberOfBuildings;
 

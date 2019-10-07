@@ -12,6 +12,9 @@ namespace MODEL_CODE
 {
     public partial class frm2 : Form
     {
+        public static int mapX; //values for the map
+        public static int mapY;
+
         public frm2()
         {
             InitializeComponent();
@@ -21,12 +24,13 @@ namespace MODEL_CODE
         {
             var myForm = new frm1();
             myForm.Show();
+            this.Hide();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public void textBox1_TextChanged(object sender, EventArgs e)
         {
-            int mapX = Int32.Parse(txtX.Text); //get map x
-            int mapY = Int32.Parse(txtY.Text); //get map y
+            int.TryParse(txtX.Text, out mapX); //get map x
+            int.TryParse(txtY.Text, out mapY); //get map y
 
             if (txtX.Text == "") //default values if nothing is entered
             {

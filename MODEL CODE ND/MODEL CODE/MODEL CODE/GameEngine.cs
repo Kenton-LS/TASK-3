@@ -185,17 +185,37 @@ namespace MODEL_CODE
                 }
                 
                 double percent = unit.Health / unit.MaxHealth; //determining whether to run away. the original code was moved here from the unit class
-                
-                if(percent <= 0.25)
+                if(unit is MeleeUnit || unit is RangedUnit)
                 {
-                    unit.Run();
+                    if (percent <= 0.25)
+                    {
+                        unit.Run();
+                    }
+                    else if (unit.IsInRange(closestUnit))
+                    {
+                        unit.Attack(closestUnit);
+                    }
+                    else
+                    {
+                        unit.Move(closestUnit);
+                    }
                 }
-                else if (unit.IsInRange(closestUnit))
+                else if(unit is WizardUnit) //wizards are cowards
                 {
-                    unit.Attack(closestUnit);
+                    if (percent <= 0.50)
+                    {
+                        unit.Run();
+                    }
+                    else if (unit.IsInRange(closestUnit))
+                    {
+                        unit.Attack(closestUnit);
+                    }
+                    else
+                    {
+                        unit.Move(closestUnit);
+                    }
                 }
-                else { unit.Move(closestUnit);
-                }
+               
                 MapBoundary(unit, map.Size); //MapBoundary given new parameters
             }
         }
